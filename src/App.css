@@ -7,10 +7,12 @@ h1{
 h2{
   border: solid black 3px;
   margin: 10px;
+  padding: 20px;
 }
 a{
   text-decoration: none;
 }
+
 .postinfo{
   border: solid blue 3px;
   margin: 10px;
@@ -18,4 +20,5 @@ a{
 .home{
   font-size: 3rem;
   color: red;
+  margin: 50px;
 }
