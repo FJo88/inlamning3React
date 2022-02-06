@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: lightyellow;
+  background-color: rgb(222, 247, 255);
 }
 header{
   font-size: 4rem;
@@ -11,17 +11,10 @@ header{
   background-color: rgb(184, 216, 226);
   
 }
-h1{
-  font-size: 3rem;
-}
-h2{
-  border: solid black 3px;
-  margin: 10px;
-  padding: 20px;
-}
 a{
   text-decoration: none;
 }
+
 .card{
   text-align: left;
   padding-left: 15px;
@@ -30,8 +23,8 @@ a{
 }
 .post{
   text-align: left;
-  padding-left: 15px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin: 10px;
   font-size: 2rem;
 }
 
