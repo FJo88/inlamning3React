@@ -1,4 +1,3 @@
-
 import {Link} from "react-router-dom"
 
 const HomePage = (props) => {
@@ -6,12 +5,21 @@ const HomePage = (props) => {
     
     return ( 
         <div>
-            <h1>React Forum-inlämningsuppgift 3</h1>
-
-                {props.posts.map(({title, userId}, id) =>{
+            <header>React Forum-inlämningsuppgift 3</header>
+            <div>
+                {props.posts.map(({title, body, id}, i) =>{
                 return <Link to=
-                {{pathname: `/post/${userId}`,}}><h2 key={id}>{title}</h2></Link>
+                {{
+                pathname: `/post/${id}`,
+                data: {
+                    data: body,
+                    title: title
+                },
+                }}
+                
+                ><h2 key={i}>{title}</h2></Link>
             })}
+            </div>
         </div>
      );
 }

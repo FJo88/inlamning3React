@@ -16,8 +16,6 @@ function App() {
   console.log(posts);
   return (
     <div className="App">
-      <header className="App-header">   
-      </header>
       <Switch>
         <Route exact path="/" render={(props) => <Homepage posts={posts} {...props}/>}/>
         <Route path="/post/:id" render={(props) => <PostPage {...props}/>}/>

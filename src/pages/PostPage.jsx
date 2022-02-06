@@ -1,15 +1,19 @@
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from "react"
-import { CircularProgress } from "@material-ui/core";
+import { Box, Button, CircularProgress } from "@material-ui/core";
+import Card from '@mui/material/Card';
 
-const PostPage = () => {
+
+const PostPage = (props) => {
     const[comments,setComments] = useState();
-
     const { id } = useParams();
+
+    const title = props.location.data.title;
+    const body =  props.location.data.data;
     
     useEffect(() => {
-        fetch(` https://jsonplaceholder.typicode.com/comments?postId=${id}`)
+        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
           .then((response) => response.json())
           .then((json) => setComments(json));
          
@@ -17,25 +21,40 @@ const PostPage = () => {
       console.log(comments);
     return (  
         <div>
-            <h1>Comments on Post {id}</h1>
+            <header>Comments on Post {id}</header>
+            <div>
+            <div>
+                <Box display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
+                    <Card variant="outlined" sx={{ maxWidth: 1000, color: 'text.primary'}}>
+                     <div className="post">
+                        <p><strong>Title:</strong> {title}</p>
+                        <p><strong>Text:</strong> {body}</p>
+                    </div>
+                    </Card>
+                </Box>
+            </div>
+    
             {comments ? (
             comments.map((comment, id) =>{
-                return (
-                <div key={id} className="postinfo">
-                    <p>{comment.body}</p>
-                    <p>{comment.name}</p>
-                    <p>{comment.email}</p>
-                </div>
+                return (    
+                <Box  key={id} display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
+                    <Card variant="outlined" sx={{ maxWidth: 800, color: 'info.main'}}>
+                     <div className="card" >
+                        <p><strong>Comment:</strong> {comment.body}</p>
+                        <p><strong>Name:</strong> {comment.name}</p>
+                        <p><strong>E-mail:</strong> {comment.email}</p>
+                     </div>
+                    </Card>
+                </Box>
                 )
-                
-                   
-            })) :(
+            }))
+            :(
             <div>
             <CircularProgress size={150}/>
             </div>
             )}
-            
-            <Link to="/"><button className="home">Take me home</button></Link>
+            </div>
+            <Link to="/"><Button variant="contained" color="success" size="large" id="home"> Take me home</Button></Link>
         </div>
     );
 }

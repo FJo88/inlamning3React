@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  background-color: lightyellow;
+}
+header{
+  font-size: 4rem;
+  font-weight: bold;
+  border: solid black 2px;
+  margin: 10px;
+  padding: 40px;
+  background-color: rgb(184, 216, 226);
+  
 }
 h1{
   font-size: 3rem;
@@ -12,13 +22,16 @@ h2{
 a{
   text-decoration: none;
 }
+.card{
+  text-align: left;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.post{
+  text-align: left;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
 
-.postinfo{
-  border: solid blue 3px;
-  margin: 10px;
-}
-.home{
-  font-size: 3rem;
-  color: red;
-  margin: 50px;
-}
