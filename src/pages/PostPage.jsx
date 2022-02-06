@@ -5,10 +5,17 @@ import { Box, Button, CircularProgress } from "@material-ui/core";
 import Card from '@mui/material/Card';
 
 
-const PostPage = (props) => {
-    
+const PostPage = () => {
+    const [posts, setPosts] = useState();
     const[comments,setComments] = useState();
     const { id } = useParams();
+
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+          .then((response) => response.json())
+          .then((json) => setPosts(json));
+         
+      }, []);
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
@@ -16,26 +23,31 @@ const PostPage = (props) => {
           .then((json) => setComments(json));
          
       }, []);
-      console.log(comments);
+      console.log(posts);
     
     return (  
         <div>
             <header>Comments on Post {id}</header>
             <div>
-            {/* <div>
+                {posts ? (
                 <Box display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
                     <Card variant="outlined" sx={{ maxWidth: 1000, color: 'primary.dark'}}>
                      <div className="post">
-                        <p><strong>Title:</strong> {props.location.data.title}</p>
-                        <p><strong>Text:</strong> {props.location.data.data}</p>
+                        <p><strong>Title:</strong> {posts.title}</p>
+                        <p><strong>Text:</strong> {posts.body}</p>
                     </div>
                     </Card>
                 </Box>
-            </div> */}
-    
-            {comments ? (
-            comments.map((comment, id) =>{
-                return (    
+                ):
+                (
+                <div>
+                    <CircularProgress size={180}/>
+                </div>  
+                )}
+                {comments ? (
+                
+                comments.map((comment, id) =>{
+                return (
                 <Box  key={id} display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
                     <Card variant="outlined" sx={{ maxWidth: 800, color: 'info.dark'}}>
                      <div className="card" >
@@ -45,6 +57,7 @@ const PostPage = (props) => {
                      </div>
                     </Card>
                 </Box>
+            
                 )
             }))
             :(

@@ -9,12 +9,10 @@ const HomePage = (props) => {
         <div>
             <header>React Forum-inlämningsuppgift 3</header>
             <div>
-                {props.posts.map(({title, body, id}, i) =>{
+                {props.posts.map(({title, id}, i) =>{
                 return (
                 <Link to={{
-                pathname: `/post/${id}`,
-                data: { data: body,
-                        title: title}
+                pathname: `/post/${id}`
                 }}>
                 <Box display="flex" justifyContent="center" alignItems="center" marginBottom={1}>
                     <Card variant="outlined" sx={{ maxWidth: 1400,  color: 'primary.dark' }}>
