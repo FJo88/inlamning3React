@@ -34,7 +34,7 @@ const PostPage = () => {
             <div>
                 {posts ? (
                 <Box display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
-                    <Card variant="outlined" sx={{ maxWidth: 1000, color: 'primary.dark'}}>
+                    <Card variant="elevation" elevation={24} sx={{ maxWidth: 1000, color: 'primary.dark'}}>
                      <div className="post">
                         <p><strong>Title:</strong> {posts.title}</p>
                         <p><strong>Text:</strong> {posts.body}</p>
@@ -50,7 +50,7 @@ const PostPage = () => {
                 comments.map((comment, id) =>{
                 return (
                 <Box  key={id} display="flex" justifyContent="center" alignItems="center" marginBottom={3}>
-                    <Card variant="outlined" sx={{ maxWidth: 800, color: 'info.dark'}}>
+                    <Card variant="elevation" elevation={24} sx={{ maxWidth: 800, color: 'info.dark'}}>
                      <div className="card" >
                         <p><strong>Comment:</strong> {comment.body}</p>
                         <p><strong>Name:</strong> {comment.name}</p>
